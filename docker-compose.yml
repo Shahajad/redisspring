@@ -1,0 +1,34 @@
+version: '3'
+services:
+  web:
+    container_name: spring-redis
+    image: redisspring
+    build: .
+    links:
+      - redis
+    ports:
+      - 8080:8080
+    depends_on:
+      - redis
+    command: sh -c "/wait && /sayhello"
+    restart: on-failure
+
+
+#  redis:
+#    image: redis:latest
+#    ports:
+#      - 6379:6379
+#    expose:
+#      - 6379
+#    volumes:
+#      - ./config/redis.conf:/redis.conf
+#    hostname: redis
+#    command: [ "redis-server", "/redis.conf" ]
+
+  redis:
+    container_name: redis
+    image: redis:v1
+    build: ./redis
+    hostname: redis
+    ports:
+      - "6379:6379"
