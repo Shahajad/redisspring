@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Welcome</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}"/>
+</head>
+<body>
+<h1 style="text-align: center">Welcome</h1>
+<h2 style="text-align: center">
+    <a th:href="@{/registration_form}">Go to User Registration </a>
+</h2>
+<br>
+<h2 style="text-align: center" th:if="${authenticated != true}">
+    <a th:href="@{/login_form}">Go to User Login </a>
+</h2>
+
+<h2 style="text-align: center" th:if="${authenticated == true}">
+    <a th:href="@{/login}">Search User With Email </a>
+</h2>
+</body>
+</html>
