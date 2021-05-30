@@ -76,7 +76,7 @@ public class UserController {
             return "registration_form";}
         model.addAttribute("user", user);
         Optional<User> temp = userService.fetchUserById(user.getEmail());
-        if (temp.isEmpty()) {
+        if (temp.isPresent()) {
             userService.saveUser(user);
             return "login_form";
         }else{
